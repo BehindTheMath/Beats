@@ -110,7 +110,27 @@ public class MenuFileChooser extends ListActivity {
 		super.onCreate(savedInstanceState);
 		this.registerForContextMenu(this.getListView());
 		Tools.setContext(this);
-		
+
+//********************************************************************************************************
+		setContentView(R.layout.file_chooser);
+
+		Button button = (Button) findViewById(R.id.storage);
+		button.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View view){
+				onFileClick(new MenuFileItem("storage/", "/storage", true, new File("/storage")));
+			}
+		});
+
+		button = (Button) findViewById(R.id.storage_emulated_0);
+		button.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View view){
+				onFileClick(new MenuFileItem("0/", "/storage/emulated/0", true, new File("/storage/emulated/0")));
+			}
+		});
+//********************************************************************************************************
+
 		adapter = null;
 		cwd = null;
 		selectedFilePath = null;
